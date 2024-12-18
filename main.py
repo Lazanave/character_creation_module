@@ -3,7 +3,8 @@ from random import randint
 from graphic_arts.start_game_banner import run_screensaver
 
 
-def attack(char_name: str, char_class: str | None):
+def attack(char_name: str, char_class: str | None) -> str:
+    """Вычисляет нанесённый урона и возвращает сообщение."""
     if char_class == 'warrior':
         return (f'{char_name} нанёс урон противнику равный '
                 f'{5 + randint(3, 5)}')
@@ -16,7 +17,8 @@ def attack(char_name: str, char_class: str | None):
     return f'{char_name} не применил специальное умение'
 
 
-def defence(char_name: str, char_class: str | None):
+def defence(char_name: str, char_class: str | None) -> str:
+    """Вычисляет заблокированный урон и возвращает сообщение."""
     if char_class == 'warrior':
         return (f'{char_name} блокировал '
                 f'{10 + randint(5, 10)} урона')
@@ -29,7 +31,8 @@ def defence(char_name: str, char_class: str | None):
     return f'{char_name} не заблокировал урон'
 
 
-def special(char_name: str, char_class: str | None):
+def special(char_name: str, char_class: str | None) -> str:
+    """Вычисляет применённое умение и возвращает сообщение."""
     if char_class == 'warrior':
         return (f'{char_name} применил специальное умение'
                 f'«Выносливость {80 + 25}»')
@@ -43,6 +46,8 @@ def special(char_name: str, char_class: str | None):
 
 
 def start_training(char_name: str, char_class: str | None) -> str:
+    """Исходя из выбранного класса выводит информацию,
+    затем запрашивает на ввод команду."""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -68,6 +73,7 @@ def start_training(char_name: str, char_class: str | None) -> str:
 
 
 def choice_char_class() -> str | None:
+    """Запрашивает и возвращает класс у игрока."""
     approve_choice = None
     char_class = None
     while approve_choice != 'y':
@@ -95,6 +101,8 @@ def choice_char_class() -> str | None:
 
 
 if __name__ == '__main__':
+    """Входная точка программы:
+    Запускает сцену, запрашивает ввод имени, запускает ввод класса."""
     run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
